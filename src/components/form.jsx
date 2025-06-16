@@ -26,7 +26,7 @@ function Form() {
 const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    await axios.post('http://localhost:8080/api/form/post', formData); // Removed 'response'
+    await axios.post(`${import.meta.env.VITE_API_URL}/api/form/post`, formData); // Removed 'response'
     alert('Form submitted successfully!');
     fetchRecords(); // Fetch updated records
   } catch (error) {
@@ -38,7 +38,7 @@ const handleSubmit = async (e) => {
 
   const fetchRecords = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/form/get');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/form/get`);
       setRecords(response.data);
     } catch (error) {
       console.error('Error fetching records:', error);
